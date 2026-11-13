@@ -56,7 +56,7 @@ jobs:
           CHANGE_MONITOR_ENV: "github-pages"
           CHANGE_MONITOR_SERVICE: "home-assistant-js-websocket"
           CHANGE_MONITOR_SOURCE: ${{ github.server_url }}/${{ github.repository }}
-          CHANGE_MONITOR_ACTOR: "github-actions:${{ github.workflow }}:${{ github.job }}:home-assistant-js-websocket:github-pages"
+          CHANGE_MONITOR_ACTOR: "github-actions:${{ github.run_id }}:${{ github.run_attempt }}:${{ github.workflow }}:${{ github.job }}:home-assistant-js-websocket:github-pages"
         run: |
           export DEPLOY_VERSION="$(git rev-parse HEAD)"
           bash .github/scripts/rollouts-reporter.sh bootstrap
@@ -71,6 +71,6 @@ jobs:
           CHANGE_MONITOR_ENV: "github-pages"
           CHANGE_MONITOR_SERVICE: "home-assistant-js-websocket"
           CHANGE_MONITOR_SOURCE: ${{ github.server_url }}/${{ github.repository }}
-          CHANGE_MONITOR_ACTOR: "github-actions:${{ github.workflow }}:${{ github.job }}:home-assistant-js-websocket:github-pages"
+          CHANGE_MONITOR_ACTOR: "github-actions:${{ github.run_id }}:${{ github.run_attempt }}:${{ github.workflow }}:${{ github.job }}:home-assistant-js-websocket:github-pages"
           CHANGE_MONITOR_OUTCOME: ${{ job.status }}
         run: bash .github/scripts/rollouts-reporter.sh finish
